@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: addition-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: addition-service
+  template:
+    metadata:
+      labels:
+        app: addition-service
+    spec:
+      containers:
+        - name: addition-service
+          image: addition-service:latest
+          ports:
+            - containerPort: 3001
