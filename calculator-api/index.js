@@ -1,13 +1,15 @@
 const express = require('express');
 const axios = require('axios');
+const cors = require('cors');
 const app = express();
 const PORT = 3000;
 
 app.use(express.json());
+app.use(cors());
 
-const ADDITION_SERVICE_URL = 'http://localhost:3001/add';
-const SUBTRACTION_SERVICE_URL = 'http://localhost:3002/subtract';
-const MULTIPLICATION_SERVICE_URL = 'http://localhost:3003/multiply';
+const ADDITION_SERVICE_URL = process.env.ADDITION_SERVICE_URL || 'http://localhost:3001/add';
+const SUBTRACTION_SERVICE_URL = process.env.SUBTRACTION_SERVICE_URL || 'http://localhost:3002/subtract';
+const MULTIPLICATION_SERVICE_URL = process.env.MULTIPLICATION_SERVICE_URL || 'http://localhost:3003/multiply';
 
 app.post('/calculate', async (req, res)=> {
     try {
