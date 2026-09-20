@@ -1,0 +1,25 @@
+services:
+  addition-service:
+    build: ./addition-service
+    ports:
+      - "3001:3001" 
+  subtraction-service:
+    build: ./subtraction-service
+    ports:
+      - "3002:3002"
+  multiplication-service:
+    build: ./multiplication-service
+    ports:
+      - "3003:3003"
+  calculator-api:
+    build: ./calculator-api
+    environment:
+      - ADDITION_SERVICE_URL=http://addition-service:3001/add
+      - SUBTRACTION_SERVICE_URL=http://subtraction-service:3002/subtract
+      - MULTIPLICATION_SERVICE_URL=http://multiplication-service:3003/multiply
+    ports:
+      - "3000:3000"
+  frontend:
+    build: ./frontend
+    ports:
+      - "5000:80"
