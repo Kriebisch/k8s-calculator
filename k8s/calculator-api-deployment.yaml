@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: calculator-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: calculator-api
+  template:
+    metadata:
+      labels:
+        app: calculator-api
+    spec:
+      containers:
+        - name: calculator-api
+          image: calculator-api
+          ports: 
+            - containerPort: 3000
+          env:
+            - name: ADDITION_SERVICE_URL
+              value: "http://addition-service:3001/add"
+            - name: SUBTRACTION_SERVICE_URL
+              value: "http://subtraction-service:3002/subtract"
+            - name: MULTIPLICATION_SERVICE_URL
+              value: "http://multiplication-service:3003/multiply" 

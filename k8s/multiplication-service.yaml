@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: multiplication-service
+spec:
+  selector:
+    app: multiplication-service
+  ports:
+    - port: 3003
+      targetPort: 3003

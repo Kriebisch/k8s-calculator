@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: multiplication-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: multiplication-service
+  template:
+    metadata:
+      labels:
+        app: multiplication-service
+    spec:
+      containers:
+        - name: multiplication-service
+          image: multiplication-service:latest
+          ports:
+            - containerPort: 3003

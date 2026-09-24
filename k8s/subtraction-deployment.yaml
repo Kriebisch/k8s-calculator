@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: subtraction-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: subtraction-service
+  template:
+    metadata:
+      labels:
+        app: subtraction-service
+    spec:
+      containers:
+        - name: subtraction-service
+          image: subtraction-service:latest
+          ports:
+            - containerPort: 3002
