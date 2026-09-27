@@ -10,6 +10,7 @@ app.use(cors());
 const ADDITION_SERVICE_URL = process.env.ADDITION_SERVICE_URL || 'http://localhost:3001/add';
 const SUBTRACTION_SERVICE_URL = process.env.SUBTRACTION_SERVICE_URL || 'http://localhost:3002/subtract';
 const MULTIPLICATION_SERVICE_URL = process.env.MULTIPLICATION_SERVICE_URL || 'http://localhost:3003/multiply';
+const DIVISION_SERVICE_URL = process.env.DIVISION_SERVICE_URL || 'http://localhost:3004/divide';
 
 app.post('/calculate', async (req, res)=> {
     try {
@@ -20,12 +21,13 @@ app.post('/calculate', async (req, res)=> {
         const subtractionResult = subtractionResponse.data.result;
         
         const multiplicationResponse = await axios.post(MULTIPLICATION_SERVICE_URL, { a: additionResult, b: subtractionResult });
-        //const multiplicationResult = multiplicationResponse.data.result;
-        res.json({ additionResult, subtractionResult, multiplicationResult: multiplicationResponse.data.result });
+        const multiplicationResult = multiplicationResponse.data.result
 
+        const divisionResponse = await axios.post(DIVISION_SERVICE_URL, { a: multiplicationResult, b: req.body.num5})
+        res.json({ additionResult, subtractionResult, multiplicationResult, divisionResult: divisionResponse.data.result });
 
     } catch (error) {
-        console.error('Fehler beim Aufruf des addition-service:', error.message);
+        console.error('Fehler bei der Berechnung:', error.message);
         res.status(500).json({ error: 'Fehler bei der Berechnung' });
     };
 

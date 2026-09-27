@@ -19,6 +19,7 @@
   <label>Zahl 2: <input type="number" id="num2"></label>
   <label>Zahl 3: <input type="number" id="num3"></label>
   <label>Zahl 4: <input type="number" id="num4"></label>
+  <label>Zahl 5: <input type="number" id="num5"></label>
 
   <button onclick="calculate()">Berechnen</button>
 
@@ -31,6 +32,7 @@
       const num2 = Number(document.getElementById('num2').value);
       const num3 = Number(document.getElementById('num3').value);
       const num4 = Number(document.getElementById('num4').value);
+      const num5 = Number(document.getElementById('num5').value);
 
       document.getElementById('result').textContent = '';
       document.getElementById('error').textContent = '';
@@ -39,7 +41,7 @@
         const response = await fetch('http://localhost:3000/calculate', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ num1, num2, num3, num4 })
+          body: JSON.stringify({ num1, num2, num3, num4, num5 })
         });
 
         if (!response.ok) {
@@ -47,7 +49,7 @@
         }
 
         const data = await response.json();
-        document.getElementById('result').textContent = `Ergebnis: ${data.multiplicationResult}`;
+        document.getElementById('result').textContent = `Ergebnis: ${data.divisionResult}`;
       } catch (error) {
         document.getElementById('error').textContent = error.message;
       }

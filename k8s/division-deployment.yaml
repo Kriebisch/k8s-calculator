@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: division-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: division-service
+  template:
+    metadata:
+      labels:
+        app: division-service
+    spec:
+      containers:
+        - name: division-service
+          image: division-service:latest
+          ports:
+            - containerPort: 3004

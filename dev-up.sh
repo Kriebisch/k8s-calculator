@@ -11,4 +11,4 @@ echo "$FRONTEND_PID" > .dev-pids
 echo "$API_PID" >> .dev-pids
 
 echo "Frontend läuft auf http://localhost:8080 (PID $FRONTEND_PID)"
-echo "Calculator API läuft auf http://localhost:3000 (PID $API_PID)
+echo "Calculator API läuft auf http://localhost:3000 (PID $API_PID)"
