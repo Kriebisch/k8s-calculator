@@ -3,10 +3,8 @@ kind: Service
 metadata:
   name: calculator-api
 spec:
-  type: NodePort
   selector:
     app: calculator-api
   ports:
     - port: 3000
       targetPort: 3000
-      nodePort: 30091
