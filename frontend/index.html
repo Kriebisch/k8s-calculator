@@ -38,7 +38,7 @@
       document.getElementById('error').textContent = '';
 
       try {
-        const response = await fetch('http://localhost:3000/calculate', {
+        const response = await fetch('/api/calculate', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ num1, num2, num3, num4, num5 })
