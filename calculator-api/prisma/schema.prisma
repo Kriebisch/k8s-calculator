@@ -1,0 +1,26 @@
+datasource db {
+    provider = "postgresql"
+}
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+model Calculation {
+    id Int @id @default(autoincrement())
+    createdAt DateTime @default(now()) @map("created_at")
+    result Decimal
+    @@map("calculations")
+    steps CalculationStep[]
+}
+
+model CalculationStep {
+    id Int @id @default(autoincrement())
+    calculationId Int @map ("calculation_id")
+    stepOrder Int @map ("step_order")
+    operation String
+    inputs Decimal[]
+    result Decimal
+    @@map("calculation_steps")
+    calculation Calculation @relation(fields: [calculationId], references: [id], onDelete: Cascade)
+}
