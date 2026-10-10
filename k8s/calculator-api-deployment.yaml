@@ -25,4 +25,9 @@ spec:
             - name: MULTIPLICATION_SERVICE_URL
               value: "http://multiplication-service:3003/multiply"
             - name: DIVISION_SERVICE_URL
-              value: "http://division-service:3004/divide" 
+              value: "http://division-service:3004/divide"
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: DATABASE_URL
