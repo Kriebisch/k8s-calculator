@@ -1,0 +1,11 @@
+stages:
+  - verify
+
+verify-calculation-api:
+  stage: varify
+  image: node:20-alpine
+  before_script:
+    - cd calculator-api
+    - npm ci
+  script:
+    - DATABASE_URL:"postgresql://dummy:dummy@localhost:5432/dummy" npx prisma generate
