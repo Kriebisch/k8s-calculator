@@ -2,7 +2,7 @@ stages:
   - verify
 
 verify-calculation-api:
-  stage: varify
+  stage: verify
   image: node:20-alpine
   before_script:
     - cd calculator-api
