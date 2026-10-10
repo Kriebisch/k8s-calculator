@@ -15,6 +15,8 @@ app.post('/add', (req, res)=>{
     res.json({ result })
 })
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
     console.log(`Addition service running on port ${PORT}`)
 });
+
+module.exports = { app, server };

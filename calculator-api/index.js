@@ -102,6 +102,8 @@ app.post("/calculate", async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`Calculator API running on port ${PORT}`);
 });
+
+export { app, prisma, server}

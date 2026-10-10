@@ -15,6 +15,8 @@ app.post('/multiply', (req, res) => {
     res.json({ result });
 });
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
     console.log(`Multiplication service running on port ${PORT}`);
 })
+
+module.exports = { app, server };

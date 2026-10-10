@@ -1,11 +1,48 @@
 stages:
-  - verify
+  - test
 
 verify-calculator-api:
-  stage: verify
+  stage: test
   image: node:20-alpine
   before_script:
     - cd calculator-api
     - npm ci
   script:
     - DATABASE_URL="postgresql://dummy:dummy@localhost:5432/dummy" npx prisma generate
+    - npm test
+
+test-addition-service:
+  stage: test
+  image: node:20-alpine
+  before_script:
+    - cd addition-service
+    - npm ci
+  script:
+    - npm test
+
+test-subtraction-service:
+  stage: test
+  image: node:20-alpine
+  before_script:
+    - cd subtraction-service
+    - npm ci
+  script:
+    - npm test
+
+test-multiplication-service:
+  stage: test
+  image: node:20-alpine
+  before_script:
+    - cd multiplication-service
+    - npm ci
+  script:
+    - npm test
+
+test-division-service:
+  stage: test
+  image: python:3.14
+  before_script:
+    - cd division-service
+    - python -m pip install --no-cache-dir -r requirements.txt
+  script:
+    - python -m pytest -v

@@ -15,7 +15,9 @@ app.post('/subtract', (req, res) =>{
     res.json({ result })
 });
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
     console.log(`Subtraction service running on Port ${PORT}`);
 
 });
+
+module.exports = { app, server };
