@@ -3,7 +3,7 @@ stages:
 
 verify-calculator-api:
   stage: test
-  image: node:20-alpine
+  image: node:24-alpine
   before_script:
     - cd calculator-api
     - npm ci
