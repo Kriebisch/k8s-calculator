@@ -13,7 +13,7 @@ verify-calculator-api:
 
 test-addition-service:
   stage: test
-  image: node:20-alpine
+  image: node:24-alpine
   before_script:
     - cd addition-service
     - npm ci
@@ -22,7 +22,7 @@ test-addition-service:
 
 test-subtraction-service:
   stage: test
-  image: node:20-alpine
+  image: node:24-alpine
   before_script:
     - cd subtraction-service
     - npm ci
@@ -31,7 +31,7 @@ test-subtraction-service:
 
 test-multiplication-service:
   stage: test
-  image: node:20-alpine
+  image: node:24-alpine
   before_script:
     - cd multiplication-service
     - npm ci
